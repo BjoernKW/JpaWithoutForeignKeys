@@ -1,22 +1,21 @@
 package de.birgitkratz.jpawithoutforeignkeys.repository.bidirectional;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@IdClass(BdBestellId.class)
 @Table(name = "bestellung")
 public class BdBestellung {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Id
+    private Integer sparte;
 
     private LocalDateTime bestelldatum;
     private BigDecimal bestellwert;
@@ -27,7 +26,8 @@ public class BdBestellung {
     public BdBestellung() {
     }
 
-    public BdBestellung(LocalDateTime bestelldatum, BigDecimal bestellwert) {
+    public BdBestellung(Integer sparte, LocalDateTime bestelldatum, BigDecimal bestellwert) {
+        this.sparte = sparte;
         this.bestelldatum = bestelldatum;
         this.bestellwert = bestellwert;
     }
@@ -38,6 +38,14 @@ public class BdBestellung {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getSparte() {
+        return sparte;
+    }
+
+    public void setSparte(Integer sparte) {
+        this.sparte = sparte;
     }
 
     public LocalDateTime getBestelldatum() {

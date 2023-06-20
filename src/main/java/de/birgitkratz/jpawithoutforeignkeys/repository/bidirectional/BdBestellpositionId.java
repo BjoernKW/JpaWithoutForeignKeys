@@ -5,12 +5,12 @@ import java.util.Objects;
 
 public class BdBestellpositionId implements Serializable {
     private Integer id;
-    private Integer bestellung;
+    private BdBestellId bestellung;
 
     public BdBestellpositionId() {
     }
 
-    public BdBestellpositionId(Integer id, Integer bestellung) {
+    public BdBestellpositionId(Integer id, BdBestellId bestellung) {
         this.id = id;
         this.bestellung = bestellung;
     }
@@ -35,11 +35,11 @@ public class BdBestellpositionId implements Serializable {
         this.id = id;
     }
 
-    public Integer getBestellung() {
+    public BdBestellId getBestellung() {
         return bestellung;
     }
 
-    public void setBestellung(Integer bestellung) {
+    public void setBestellung(BdBestellId bestellung) {
         this.bestellung = bestellung;
     }
 }

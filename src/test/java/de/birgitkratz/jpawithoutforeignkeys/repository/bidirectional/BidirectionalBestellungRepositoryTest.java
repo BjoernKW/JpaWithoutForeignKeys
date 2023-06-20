@@ -22,7 +22,7 @@ class BidirectionalBestellungRepositoryTest {
 
     @Test
     void savingBestellungBidirectional() {
-        final var bestellung = new BdBestellung(LocalDateTime.now(), BigDecimal.TEN);
+        final var bestellung = new BdBestellung(1, LocalDateTime.now(), BigDecimal.TEN);
         final var savedBestellung = repository.save(bestellung);
 
         final var bestellposition1 = new BdBestellposition();
@@ -44,7 +44,8 @@ class BidirectionalBestellungRepositoryTest {
 
         final var bdBestellposition = savedBestellpositionen.get(0);
 
-        final var bdBestellpositionId = new BdBestellpositionId(bdBestellposition.getId(), savedBestellung.getId());
+        final var bdBestellId = new BdBestellId(savedBestellung.getId(), savedBestellung.getSparte());
+        final var bdBestellpositionId = new BdBestellpositionId(bdBestellposition.getId(), bdBestellId);
         final var byId = bestellpositionRepository.findById(bdBestellpositionId);
         assertThat(byId)
                 .isPresent();
