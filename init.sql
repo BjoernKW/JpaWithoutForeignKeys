@@ -1,6 +1,6 @@
 create table bestellung
 (
-    id            integer generated always as identity,
+    id            integer not null,
     sparte        integer not null,
     bestelldatum  timestamp,
     bestellwert   numeric(5, 2),
@@ -9,12 +9,13 @@ create table bestellung
 
 create table bestellposition
 (
-    id                integer not null,
-    bestellung_id     integer not null,
+    id            integer not null,
+    bestellung_id integer not null,
     bestellung_sparte integer not null,
-    name              varchar,
-    anzahl            integer,
+    name          varchar,
+    anzahl        integer,
     constraint bestellposition_pk primary key (id, bestellung_id, bestellung_sparte)
 );
 
+create sequence bestellung_id_seq as integer;
 create sequence bestellposition_id_seq as integer;
