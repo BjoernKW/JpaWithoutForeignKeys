@@ -13,7 +13,7 @@ public class BdBestellposition {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @Id
-    @JoinColumns( {
+    @JoinColumns({
             @JoinColumn(name = "bestellung_id", referencedColumnName = "id"),
             @JoinColumn(name = "bestellung_sparte", referencedColumnName = "sparte")
     })
